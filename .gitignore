@@ -43,9 +43,6 @@
 .gcc-flags.json
 .pio
 
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+*/.vscode/*
+!*/.vscode/extensions.json
 *.code-workspace

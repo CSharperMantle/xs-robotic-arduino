@@ -12,11 +12,15 @@ static LEDMorseSender cqSender{PIN_STATUS};
 
 void setup()
 {
+	Serial.begin(115200);
 	cqSender.setup();
 }
 
 void loop()
 {
+	while (!Serial.available()) {
+		;
+	}
 	String str = Serial.readStringUntil('$');
 	cqSender.setMessage(str);
 	cqSender.sendBlocking();
