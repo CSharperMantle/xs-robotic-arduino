@@ -6,9 +6,9 @@
 #include <Arduino.h>
 #include <morse.h>
 
-#define PIN_STATUS	13
+#define PIN_STATUS	10
 
-static LEDMorseSender cqSender{PIN_STATUS};
+static SpeakerMorseSender cqSender{PIN_STATUS};
 
 void setup()
 {
