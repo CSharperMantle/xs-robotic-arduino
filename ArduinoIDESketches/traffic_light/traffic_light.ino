@@ -43,19 +43,14 @@ void timedLightLED(int light, unsigned int duration) {
 void pulseLEDs(int light,
     unsigned int times,
     unsigned int high_duration,
-    unsigned int low_duration,
-    bool time_last_low) {
+    unsigned int low_duration) {
   setAllLEDs(LOW);
-  for (unsigned int i = 0; i < times - 1; i++) {
-    timedLightLED(light, high_duration);
+  for (unsigned int i = 0; i < times; i++) {
     setAllLEDs(LOW);
     delay(low_duration);
+    timedLightLED(light, high_duration);
   }
-  timedLightLED(light, high_duration);
   setAllLEDs(LOW);
-  if (time_last_low) {
-    delay(low_duration);
-  }
 }
 
 void setup() {
@@ -64,8 +59,8 @@ void setup() {
 
 void loop() {
   timedLightLED(LIGHT_RED, 5000);
-  pulseLEDs(LIGHT_RED, 5, 500, 500, false);
+  pulseLEDs(LIGHT_RED, 5, 500, 500);
   timedLightLED(LIGHT_GREEN, 5000);
-  pulseLEDs(LIGHT_GREEN, 5, 500, 500, false);
+  pulseLEDs(LIGHT_GREEN, 5, 500, 500);
   timedLightLED(LIGHT_YELLOW, 2000);
 }
